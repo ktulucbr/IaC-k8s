@@ -6,7 +6,8 @@
 trigger:
 - main
 
-pool: self-hosted
+#pool: self-hosted
+pool: default
 
 steps:
 - script: echo Hello, world!
