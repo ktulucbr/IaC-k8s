@@ -15,8 +15,8 @@ resource "azurerm_resource_group" "default" {
 }
 
 # The container registry
-resource "azurerm_container_registry" "acr" {
-  name                     = "acrcluster"
+resource "azurerm_container_registry" "default" {
+  name                     = "${random_pet.prefix.id}-acr"
   resource_group_name      = azurerm_resource_group.default.name
   location                 = azurerm_resource_group.default.location
   sku                      = "Basic"
