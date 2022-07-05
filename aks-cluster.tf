@@ -28,6 +28,10 @@ resource "azurerm_container_registry" "default" {
   location                 = azurerm_resource_group.default.location
   sku                      = "Basic"
   admin_enabled            = true
+
+  tags = {
+    environment = "Demo"
+  }
 }
 
 # The k8s cluster
