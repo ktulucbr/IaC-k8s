@@ -4,14 +4,14 @@ trigger:
 
 resources:
   pipelines:
-  - pipeline: myappbuild  # Name of the pipeline resource
+  - pipeline: ktulucbr.docker-helloworld  # Name of the pipeline resource
     source: myapp-build-pipeline # Name of the triggering pipeline
     trigger: 
       branches:
       - master
 
 variables:
-  vmImageName: 'ubuntu-latest'
+  vmImageName: 'self-hosted'
 
 jobs:
 - deployment: Deploy

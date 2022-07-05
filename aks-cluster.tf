@@ -4,6 +4,7 @@ provider "azurerm" {
   features {}
 }
 
+# Create the resource group to host our k8s cluster
 resource "azurerm_resource_group" "default" {
   name     = "${random_pet.prefix.id}-rg"
   location = "WestEurope"
@@ -13,6 +14,16 @@ resource "azurerm_resource_group" "default" {
   }
 }
 
+# The container registry
+resource "azurerm_container_registry" "acr" {
+  name                     = "${random_pet.prefix.id}-acr"
+  resource_group_name      = azurerm_resource_group.default.location
+  location                 = azurerm_resource_group.default.name
+  sku                      = "Basic"
+  admin_enabled            = true
+}
+
+# The k8s cluster
 resource "azurerm_kubernetes_cluster" "default" {
   name                = "${random_pet.prefix.id}-aks"
   location            = azurerm_resource_group.default.location
