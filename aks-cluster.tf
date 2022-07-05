@@ -1,5 +1,11 @@
 resource "random_pet" "prefix" {}
 
+resource "random_string" "random" {
+  length           = 32
+  special          = false
+  upper	           = false
+}
+
 provider "azurerm" {
   features {}
 }
@@ -16,7 +22,8 @@ resource "azurerm_resource_group" "default" {
 
 # The container registry
 resource "azurerm_container_registry" "default" {
-  name                     = "thismustbeunique"
+  #name                     = "thismustbeunique"
+  name                     = "${random_string.random.id}"
   resource_group_name      = azurerm_resource_group.default.name
   location                 = azurerm_resource_group.default.location
   sku                      = "Basic"
