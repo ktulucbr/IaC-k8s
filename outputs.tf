@@ -6,8 +6,12 @@ output "kubernetes_cluster_name" {
   value = azurerm_kubernetes_cluster.default.name
 }
 
+output "acr_admin_user" {
+  value = azurerm_container_registry.default.admin_username
+}
+
 output "acr_admin_password" {
-  value = azurerm_container_registry.acr.admin_password
+  value = azurerm_container_registry.default.admin_password
   description = "The object ID of the user"
   sensitive = true
 }
