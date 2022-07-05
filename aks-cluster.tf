@@ -17,8 +17,8 @@ resource "azurerm_resource_group" "default" {
 # The container registry
 resource "azurerm_container_registry" "acr" {
   name                     = "${random_pet.prefix.id}-acr"
-  resource_group_name      = azurerm_resource_group.default.location
-  location                 = azurerm_resource_group.default.name
+  resource_group_name      = azurerm_resource_group.default.name
+  location                 = azurerm_resource_group.default.location
   sku                      = "Basic"
   admin_enabled            = true
 }
