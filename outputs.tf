@@ -7,7 +7,7 @@ output "kubernetes_cluster_name" {
 }
 
 output "acr_publicendpoint" {
-  value = azurerm_container_registry.default.loginServer
+  value = azurerm_container_registry.default.login_server
 }
 
 output "acr_admin_user" {
