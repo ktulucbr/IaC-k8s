@@ -15,8 +15,7 @@ output "acr_admin_user" {
 }
 
 output "acr_admin_password" {
-  value = azurerm_container_registry.default.admin_password
-  description = "The object ID of the user"
+  value = nonsensitive(azurerm_container_registry.default.admin_password)
   sensitive = true
 }
 
