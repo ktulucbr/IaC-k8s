@@ -4,6 +4,10 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "2.66.0"
     }
+    azuredevops = {
+      source  = "microsoft/azuredevops"
+      version = ">= 0.0.1"
+    }
   }
   backend "azurerm" {
     resource_group_name  = "rg-tamopstf"
