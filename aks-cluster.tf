@@ -11,7 +11,6 @@ provider "azurerm" {
 }
 
 provider "azuredevops" {
-  features {}
 }
 
 # Create the resource group to host our k8s cluster
@@ -66,9 +65,14 @@ resource "azurerm_kubernetes_cluster" "default" {
   }
 }
 
+# Azure devops project
+resource "azuredevops_project" "project01" {
+    project_name = "project01"
+}
+
 # Create an SPN connection from Azure to Azure Devops
 resource "azuredevops_serviceendpoint_azurerm" "endpointazure" {
-  project_id = azuredevops_project.tf-example.id
+  project_id = azuredevops_project.project01.id
   service_endpoint_name = "azurerm_endpoint_test"
   description = "Managed by Terraform"
   credentials {
