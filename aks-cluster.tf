@@ -10,6 +10,10 @@ provider "azurerm" {
   features {}
 }
 
+provider "azuredevops" {
+  features {}
+}
+
 # Create the resource group to host our k8s cluster
 resource "azurerm_resource_group" "default" {
   name     = "${random_pet.prefix.id}-rg"
