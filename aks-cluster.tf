@@ -61,3 +61,17 @@ resource "azurerm_kubernetes_cluster" "default" {
     environment = "Demo"
   }
 }
+
+# Create an SPN connection from Azure to Azure Devops
+resource "azuredevops_serviceendpoint_azurerm" "endpointazure" {
+  project_id = azuredevops_project.tf-example.id
+  service_endpoint_name = "azurerm_endpoint_test"
+  description = "Managed by Terraform"
+  credentials {
+    serviceprincipalid  = var.service_principal_id
+    serviceprincipalkey = var.service_principal_key
+  }
+  azurerm_spn_tenantid = var.azurerm_spn_tenant_id
+  azurerm_subscription_id = var.azurerm_subscription_id
+  azurerm_subscription_name = "pay-as-you-go"
+}
